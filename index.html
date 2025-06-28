@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Tâm Thư Gửi Em</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+
+    /* Hiệu ứng trái tim & tuyết */
+    .particle {
+      position: fixed;
+      top: -10px;
+      color: pink;
+      font-size: 20px;
+      animation: fall linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+
+    /* Hộp thư */
+    #letter-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: pink;
+      padding: 30px;
+      border-radius: 15px;
+      width: 80%;
+      max-width: 600px;
+      box-shadow: 0 0 20px rgba(255, 192, 203, 0.8);
+      display: none;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translate(-50%, -60%) scale(0.9);}
+      to {opacity: 1; transform: translate(-50%, -50%) scale(1);}
+    }
+
+    #open-btn {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 15px 30px;
+      font-size: 18px;
+      background: pink;
+      color: black;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 0 0 10px pink;
+    }
+
+    #letter-text {
+      white-space: pre-line;
+      border: none;
+      background: transparent;
+      font-size: 16px;
+      line-height: 1.6;
+      animation: typing 4s steps(100, end);
+      overflow: hidden;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <button id="open-btn">📩 Mở Thư</button>
+  <div id="letter-container">
+    <div id="letter-text">
+      Gửi chị yêu của em....
+
+      Em biết khoảng thời gian gần đây em rất thờ ơ với chị, không quan tâm và nói chuyện, tâm sự với chị như trước...
+
+      Em thật sự biết lỗi rồi, em không thể rời xa chị được, em ước rằng em có thể quay lại ngày hôm qua, chỉ ngày hôm qua thôi, em nói chuyện nghiêm túc với chị thì có lẽ 2 ta đã không như bây giờ...
+
+      Em ước rằng em có 1 điều ước, em không ham muốn gì, chỉ muốn xin rằng em có thể trở lại về ngày hôm qua và nói chuyện nghiêm túc với chị sau đó ta sẽ hạnh phúc bên nhau...
+
+      Nếu, chị còn thương em... em mong rằng chị có thể cho em 1 cơ hội, duy nhất lần này thôi, e thật sự muốn được ở bên cạnh chị, thêm 1 lần nữa, em không thể xa chị, dù cho có thế nào đi chăng nữa...
+
+      Em thật sự yêu chị, mong chị có thể hiểu cho em... em biết rằng em đã làm tổn thương chị rất nhiều lần, nhưng em xin lỗi, thành thật xin lỗi chị, em muốn được ở bên chị thêm 1 lần nữa, hãy cho em cơ hội...
+
+      Em yêu chị nhiều lắm, mong chị có thể suy nghĩ lại cho em, em xin lỗi chị nhiều...
+
+      Em yêu chị nhiều lắm...❤️
+    </div>
+  </div>
+
+  <script>
+    const openBtn = document.getElementById("open-btn");
+    const letter = document.getElementById("letter-container");
+
+    openBtn.addEventListener("click", () => {
+      openBtn.style.display = "none";
+      letter.style.display = "block";
+    });
+
+    // Tạo hiệu ứng trái tim/tuyết rơi
+    setInterval(() => {
+      const particle = document.createElement("div");
+      particle.classList.add("particle");
+      particle.style.left = Math.random() * 100 + "vw";
+      particle.style.animationDuration = (2 + Math.random() * 3) + "s";
+      particle.innerText = Math.random() > 0.5 ? "❄️" : "💖";
+      document.body.appendChild(particle);
+      setTimeout(() => particle.remove(), 5000);
+    }, 100);
+  </script>
+</body>
+</html>
